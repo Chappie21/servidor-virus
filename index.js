@@ -34,6 +34,11 @@ const storage = multer.diskStorage({
 // definir upload de archivos con configuracion storage
 const upload = multer({storage: storage});
 
+// Envia pagina principal donde se podran visualizar los archivos recientes
+app.get('/', async (req, res) =>{
+    res.send('page')
+})
+
 // Endpoint donde se reciben los archivos enviados por el servicio
 app.post('/files', ficheros, upload.single('File'), async (req, res)=> {
     console.log("Archivo recibido: " + req.file.path);
